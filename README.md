@@ -31,7 +31,6 @@
  
 <h2>Cara Penggunaan Aplikasi</h2>
 <ol>
-  <li> Cara penggunaan </li>
   <li> Memilih nomor 1 pada Menu </li>
   <li> Memilih menu yang Anda butuhkan </li>
   <li> Apabila Anda memilih menu nomor 2 maka stok lama dari restoran dituliskan pada terminal, agar Si-Pan membawa Anda secara otomatis ke perubahan stok makanan </li>
