@@ -322,7 +322,7 @@ void mengurutkan(){
      			--c;
 			}
 	}
-	printf("Jika ingin melihat hasil pengurutkan\n silahkan ke menu menampilkan data, ketik '1' untuk ke menu dan jika ingin keluar ketik '0' : ");
+	printf("Silahkan ke menu menampilkan data, ketik '1' untuk ke menu dan jika ingin keluar ketik '0' : ");
 	scanf("%d", &j);
 	
 		if(j == 1 ){
