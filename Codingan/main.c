@@ -8,7 +8,7 @@
 //	Hanif Nur Fadillah            20081010231
 //	Leonhoss Hutagaol            20081010215
 //	Farhan Jelang Ramadhan        20081010213
-//	Dipika Syaiban Ainun            20081010216
+//	Dipika Syaiban Ainun           20081010216
 
 
 void menampilkan();
