@@ -3,12 +3,12 @@
 #include <math.h>
 #include <string.h>
 
-// 	=============== KELOMPOK 5 =============== 
+// ======= KELOMPOK 5 ======= 
 //	Nabila Wafiqotul Azizah        20081010140
 //	Hanif Nur Fadillah            20081010231
 //	Leonhoss Hutagaol            20081010215
 //	Farhan Jelang Ramadhan        20081010213
-//	Dipika Syaiban Ainun           20081010216
+//	Dipika Syaiban Ainun            20081010216
 
 
 void menampilkan();
@@ -28,6 +28,19 @@ typedef struct SiPan{
 
 data_SiPan SiPan[100];
 
+typedef struct beliSiPan{
+	int unit;
+	int byr;
+	int hrg;
+	int nml;
+	int kembalian;
+	char mkn[50];
+	char resto[50];
+}data_beli;
+
+data_beli beli[100];
+
+
 int i,b,c,e,a,n = 0;
 int j;
 char batas[100];
@@ -40,8 +53,9 @@ void pembuat_data_menu(int n, char array_makanan[6][100], float array_harga[6]){
 	}
 }
 
+
 void menu(){
- int pilih;
+	int pilih;
  
 printf("||==============================================||\n");
 printf("||\t\tAPLIKASI Si-Pan\t\t\t||\n");
@@ -77,6 +91,7 @@ printf("||==============================================||\n");
 		break;
 		case 5:
 			pembelian();
+			write();
 		break;
 		case 6:
 			keluar();
@@ -98,7 +113,7 @@ void menampilkan(){
 				printf("Lokasi Restoran         : %s\n",SiPan[n].lokasi_restoran);
 				printf("Daftar Menu Restoran	: \n");
 					for(i = 0; i < 6; i++){
-				printf(" %s	= %.3f\n" , SiPan[n].nama_makanan[i], SiPan[n].harga_makanan[i]);
+				printf(" %s = %.3f\n" , SiPan[n].nama_makanan[i], SiPan[n].harga_makanan[i]);
 				}
 				printf("Stok Makanan Secara Keseluruhan = %d" ,SiPan[n].stok_slrh);
 				printf("\n\n");
@@ -190,6 +205,7 @@ void mencari(){
 		
 }
 
+
 void memperbarui(){
 	int stok_mkn;
 	printf ("Masukkan stok makanan yang ingin diupdate : "); scanf("%d", &stok_mkn);
@@ -226,45 +242,33 @@ void memperbarui(){
 
 
 void pembelian(){
-	char resto[150];
-	char mkn[150];
-	float unit;
-	float byr;
-	float hrg;
-	float nml;
-	float kembalian;
 	
-	printf("Masukkan restoran yang ingin Anda kunjungi			: "); fflush(stdin); gets(resto);
-	printf("Masukkan makanan yang ingin Anda beli pada restoran tersebut	: "); fflush(stdin); gets(mkn);
-	printf("Masukkan jumlah makanan yang ingin Anda beli			: "); scanf("%d",&unit);
-	printf("Masukkan harga per makanan					: "); scanf("%d",&hrg);
-		
-	if ((strcmp(resto,SiPan[n].nama_restoran) == 0) || (unit>0)){
+	printf("Masukkan restoran yang ingin Anda kunjungi			: "); fflush(stdin); gets(beli[n].resto);
+	printf("Masukkan makanan yang ingin Anda beli pada restoran tersebut	: "); fflush(stdin); gets(beli[n].mkn);
+	printf("Masukkan jumlah makanan yang ingin Anda beli			: "); scanf("%d",&beli[n].unit);
+	printf("Masukkan harga per makanan					: "); scanf("%d",&beli[n].hrg);
+	if ((strcmp(beli[n].resto,SiPan[n].nama_restoran) == 0) || (beli[n].unit>0)){
 	printf("Pembelian Anda Sedang Diproses, Mohon Ditunggu!!\n\n");
-}
-else {
+	}
+	else {
 		("Pembelian Anda Ditolak, Silahkan Pilih Menu Kembali !!");
 	}
-		for( n = 0; n<11; n++){
-		for(i = 0; i < 6; i++){
-		byr = unit*hrg;
+	
+		beli[n].byr = beli[n].unit*beli[n].hrg;
+		printf("\nJumlah yang harus anda bayarkan sebesar Rp %d", beli[n].byr);
+		printf("\nMasukkan nominal yang dibayarkan (dalam satuan angka): "); scanf("%d",&beli[n].nml);
+		if(beli[n].nml>beli[n].byr){
+			beli[n].kembalian=beli[n].nml-beli[n].byr;
+			printf("\nUang kembalian bernilai Rp %d", beli[n].kembalian);
 		}
-		}
-
-		printf("\nJumlah yang harus anda bayarkan sebesar Rp %f", byr);
-		printf("\nMasukkan nominal yang dibayarkan (dalam satuan angka): "); scanf("%d",&nml);
-		if(nml>byr){
-			kembalian=nml-byr;
-			printf("\n\nUang kembalian bernilai Rp %d", kembalian);
-		}
-		else if(nml==byr){
-			printf("\n\nTidak ada uang kembalian!!");
+		else if(beli[n].nml==beli[n].byr){
+			printf("\nTidak ada uang kembalian!!");
 		}
 		else{
-			printf("\n\n Uang yang Anda berikan kurang dari nominal pembayaran, silahkan masukkan tambahan uang !!");
+			printf("\nUang yang Anda berikan kurang dari nominal pembayaran, silahkan masukkan tambahan uang !!");
 		}
-		printf("\n\n Makanan Sudah Siap, Silahkan Menikmati, Semoga Hari Anda Menyenangkan :)\n\n ");
-		
+		printf("\nMakanan Sudah Siap, Silahkan Menikmati, Semoga Hari Anda Menyenangkan :)\n\n ");
+				
 printf("Jika ingin kembali ke menu ketik '1' dan jika ingin keluar ketik '0' : ");
 scanf("%d", &j);
 	
@@ -277,6 +281,7 @@ scanf("%d", &j);
 			exit;
 		}	
 }
+
 
 void mengurutkan(){
 	char insernamamkn[100];
@@ -414,6 +419,7 @@ int write(){
 	return 0;
 }
 
+
 int isiData(){
 	//dt 1
 	strcpy(SiPan[0].nama_restoran,"Warung Apung Rahmawati");
@@ -453,7 +459,7 @@ int isiData(){
 	char makanan5[6][100] = {"Kroket Rendang","Lumpia Mini","Kids Meal","Botanika Tea Set","Cah Kangkung","Es Jeruk Nipis"};
 	float harga5[6] = {38.000,36.000,35.000,110.000,35.000,20.000};
 	pembuat_data_menu(4, makanan5, harga5);
-	SiPan[4].stok_slrh = 600;
+	SiPan[4].stok_slrh = 610;
 	
 	//dt 6
 	strcpy(SiPan[5].nama_restoran,"Rawon Rosobo");
@@ -503,6 +509,7 @@ int isiData(){
 	pembuat_data_menu(10, makanan11, harga11);
 	SiPan[10].stok_slrh = 1300;
 }
+
 
 int main(){
 	
