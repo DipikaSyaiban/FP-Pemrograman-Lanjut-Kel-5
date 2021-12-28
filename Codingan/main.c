@@ -3,7 +3,7 @@
 #include <math.h>
 #include <string.h>
 
-// ======= KELOMPOK 5 ======= 
+// 	=============== KELOMPOK 5 =============== 
 //	Nabila Wafiqotul Azizah        20081010140
 //	Hanif Nur Fadillah            20081010231
 //	Leonhoss Hutagaol            20081010215
