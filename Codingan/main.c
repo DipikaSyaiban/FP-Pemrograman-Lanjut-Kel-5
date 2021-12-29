@@ -1,9 +1,9 @@
-#include <stdio.h>
+#include<stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
 
-// ======= KELOMPOK 5 ======= 
+//  	=============== KELOMPOK 5 =============== 
 //	Nabila Wafiqotul Azizah        20081010140
 //	Hanif Nur Fadillah            20081010231
 //	Leonhoss Hutagaol            20081010215
@@ -173,7 +173,7 @@ void mencari(){
 		}
 		
 	if (a==2){
-		printf ("Masukkan data dari nama restoran yang ingin dicari makanan : ");fflush(stdin); gets(namaresto);
+		printf ("Masukkan data dari nama restoran yang ingin dicari : ");fflush(stdin); gets(namaresto);
 			for( n = 0; n<11; n++){
 		if(strcmp(namaresto,SiPan[n].nama_restoran) == 0){
 				printf("data berada di indeks ke - %d\n",n);
