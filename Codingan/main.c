@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
@@ -322,7 +322,7 @@ void mengurutkan(){
      			--c;
 			}
 	}
-	printf("Silahkan ke menu menampilkan data, ketik '1' untuk ke menu dan jika ingin keluar ketik '0' : ");
+	printf("Jika ingin melihat hasil pengurutkan\n silahkan ke menu menampilkan data, ketik '1' untuk ke menu dan jika ingin keluar ketik '0' : ");
 	scanf("%d", &j);
 	
 		if(j == 1 ){
@@ -398,23 +398,15 @@ void keluar(){
 }
 
 int write(){
+	
 	char *filename = "SiPan.txt";
-
-	// open the file for writing
    	FILE *BSiPan = fopen(filename, "w");
     if (BSiPan == NULL)
 	{
 	    printf("Error opening the file %s", filename);
 	    return -1;
     }
-
-	for( n = 0; n < 11; n++){
-        fprintf(BSiPan,"\nNama Restoran : %s\nLokasi Restoran : %s\nStok Makanan Secara Keseluruhan : %d\n",&SiPan[n].nama_restoran,&SiPan[n].lokasi_restoran,&SiPan[n].stok_slrh);
-       	for( i = 0; i < 6; i++){
-       		fprintf(BSiPan, "\n%s = %.3f\n", &SiPan[n].nama_makanan[i], &SiPan[n].harga_makanan[i]);
-       	}
-    }
-    // close the file
+        fprintf(BSiPan,"\nNama Restoran : %s\n Nama Makanan yang Dibeli : %s\n Jumlah Makanan yang Dibeli : %d\n Harga Setiap Makanan yang Dibeli: %d\n Nominal yang Dibayarkan: %d\n Kembalian: %d\n", &beli[n].resto, &beli[n].mkn, &beli[n].unit, &beli[n].hrg, &beli[n].nml, &beli[n].kembalian);
 	fclose(BSiPan);
 	return 0;
 }
@@ -459,7 +451,7 @@ int isiData(){
 	char makanan5[6][100] = {"Kroket Rendang","Lumpia Mini","Kids Meal","Botanika Tea Set","Cah Kangkung","Es Jeruk Nipis"};
 	float harga5[6] = {38.000,36.000,35.000,110.000,35.000,20.000};
 	pembuat_data_menu(4, makanan5, harga5);
-	SiPan[4].stok_slrh = 610;
+	SiPan[4].stok_slrh = 600;
 	
 	//dt 6
 	strcpy(SiPan[5].nama_restoran,"Rawon Rosobo");
